@@ -22,7 +22,7 @@ const Employees = () => {
     email: string;
     department_id: number;
   }
-  const { employees } = useAivenDataContext();
+  const { employees, date } = useAivenDataContext();
   const [user_name, setUser_name] = useState<string>("");
   const [job_title, setJob_title] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -42,6 +42,7 @@ const Employees = () => {
       console.log(error);
     }
   };
+
   const updatedEmployeeData = {
     user_name: user_name,
     job_title: job_title,
@@ -62,12 +63,31 @@ const Employees = () => {
       if (updateEmpoyeeData.ok) {
         toast({
           title: "SuccessFully Updated",
-          description: "Friday, February 10, 2023 at 5:57 PM",
+          description: date,
         });
         setUser_name("");
         setJob_title("");
         setEmail("");
         setIsActionClicked(0);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteEmployee = async (id: number) => {
+    try {
+      const deleteEmpoyeeData = await fetch(
+        `http://127.0.0.1:3000/employees/delete/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (deleteEmpoyeeData.ok) {
+        toast({
+          title: "SuccessFully Deleted",
+          description: date,
+        });
       }
     } catch (error) {
       console.log(error);
@@ -130,7 +150,11 @@ const Employees = () => {
                       </div>
 
                       <div className="hover:bg-red-500 hover:text-white rounded p-1 cursor-pointer duration-100">
-                        <Trash />
+                        <Trash
+                          onClick={() =>
+                            handleDeleteEmployee(employee.employee_id)
+                          }
+                        />
                       </div>
                     </div>
                   </TableCell>
@@ -154,7 +178,11 @@ const Employees = () => {
                       </div>
 
                       <div className="hover:bg-red-500 hover:text-white rounded p-1 cursor-pointer duration-100">
-                        <Trash />
+                        <Trash
+                          onClick={() =>
+                            handleDeleteEmployee(employee.employee_id)
+                          }
+                        />
                       </div>
                     </div>
                   </TableCell>
