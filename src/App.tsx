@@ -9,6 +9,8 @@ import Tasks from "./pages/Tasks/Tasks";
 import Messages from "./pages/Messages/Messages";
 import Profile from "./pages/Profile/Profile";
 import Home from "./pages/Home/Home";
+import AddEmployee from "./pages/Employees/AddEmployee";
+import Employees from "./pages/Employees/Employees";
 // import { useAuthContext } from "./store/AuthContext";
 
 function App() {
@@ -40,15 +42,23 @@ function App() {
           path: "profile",
           element: <Profile />,
         },
+        {
+          path: "add-employee",
+          element: <AddEmployee />,
+        },
+        {
+          path: "employees",
+          element: <Employees />,
+        },
+        {
+          path: "todos",
+          element: <Todo />,
+        },
       ],
     },
     {
       path: "login",
       element: <Login />,
-    },
-    {
-      path: "todo",
-      element: <Todo />,
     },
   ]);
   return <RouterProvider router={router} />;

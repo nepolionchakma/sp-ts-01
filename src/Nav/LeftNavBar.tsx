@@ -18,32 +18,32 @@ import { NavLink, Outlet } from "react-router-dom";
 const LeftNavBar = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const navs = [
-    {
-      id: 1,
-      title: "Users Menagement",
-      icon: <FiUserPlus className="text-2xl" />,
-      cate: [
-        {
-          id: 1,
-          name: "Add User",
-          icon: <FiUserPlus className="text-2xl" />,
+    // {
+    //   id: 1,
+    //   title: "Users Menagement",
+    //   icon: <FiUserPlus className="text-2xl" />,
+    //   cate: [
+    //     {
+    //       id: 1,
+    //       name: "Add User",
+    //       icon: <FiUserPlus className="text-2xl" />,
 
-          link: "/adduser",
-        },
-        {
-          id: 2,
-          name: "All User",
-          icon: <FiUsers className="text-2xl" />,
-          link: "/allusers",
-        },
-        {
-          id: 3,
-          name: "Invite User",
-          icon: <FiSend className="text-2xl" />,
-          link: "/inviteuser",
-        },
-      ],
-    },
+    //       link: "/adduser",
+    //     },
+    //     {
+    //       id: 2,
+    //       name: "All User",
+    //       icon: <FiUsers className="text-2xl" />,
+    //       link: "/allusers",
+    //     },
+    //     {
+    //       id: 3,
+    //       name: "Invite User",
+    //       icon: <FiSend className="text-2xl" />,
+    //       link: "/inviteuser",
+    //     },
+    //   ],
+    // },
     {
       id: 2,
       title: "Employees",
@@ -53,7 +53,7 @@ const LeftNavBar = () => {
           id: 1,
           name: "Add Employee",
           icon: <FiPlus className="text-2xl" />,
-          link: "/adddata",
+          link: "/add-employee",
         },
         {
           id: 2,
@@ -116,7 +116,7 @@ const LeftNavBar = () => {
   ];
   return (
     <div className="flex gap-4 p-4">
-      <div className="border h-[85svh]">
+      <div className="border h-[82svh]">
         <Sidebar collapsed={collapsed}>
           <div className="flex justify-center">
             <div
